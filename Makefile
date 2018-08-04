@@ -1,4 +1,4 @@
-all: clean build
+all: clean build update
 
 build: default raw variants rawvariants
 
@@ -21,3 +21,5 @@ rawvariants:
 	for sass in scss/themes/build-variants/*--styles.scss; do \
 		theme=`basename $$sass --styles.scss`; \
 	sassc -t compact $$sass css/raw/variants/$$theme.css; done
+update:
+	./slack-update.sh
